@@ -25,7 +25,10 @@ const SignUpForm = () => {
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
-		if (password !== confirmPassword) return;
+		if (password !== confirmPassword) {
+			setErrorMessage('Passwords must match.');
+			return;
+		}
 		try {
 			const { user } = await createAuthUserWithEmailAndPassword(
 				email,
